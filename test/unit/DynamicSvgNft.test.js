@@ -119,7 +119,7 @@ const tokenUris = [blueShapeTokenUri, greenShapeTokenUri, orangeShapeTokenUri, r
                             console.log(e);
                             reject(e);
                         }
-                    })
+                    });
                     try {
                         const txResponse = await dynamicSvgNft.requestNftMint({ value: mintFee });
                         const txReceipt = await txResponse.wait(1);
@@ -130,11 +130,11 @@ const tokenUris = [blueShapeTokenUri, greenShapeTokenUri, orangeShapeTokenUri, r
                             dynamicSvgNft.address
                         );
                     } catch (e) {
-                        console.log(e)
-                        reject(e)
+                        console.log(e);
+                        reject(e);
                     }
-                })
-            })
+                });
+            });
         });
 
         describe("svgToBase64", () => {
