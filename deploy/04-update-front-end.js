@@ -41,6 +41,7 @@ async function updateContractAddresses() {
     const chainId = network.config.chainId.toString();
     const nftMarketplace = await ethers.getContract("NftMarketplace");
     const dynamicSvgNft = await ethers.getContract("DynamicSvgNft");
+    const basicIpfsNft = await ethers.getContract("BasicIpfsNft");
     const contractAddresses = JSON.parse(fs.readFileSync(FRONTEND_CONTRACT_ADDERS_FILE, "utf8"));
 
     if (chainId in contractAddresses) {
@@ -51,9 +52,15 @@ async function updateContractAddresses() {
         if (!contractAddresses[chainId]["DynamicSvgNft"].includes(dynamicSvgNft.address)) {
             contractAddresses[chainId]["DynamicSvgNft"].push(dynamicSvgNft.address);
         }
+
+        if (!contractAddresses[chainId]["BasicIpfsNft"].includes(basicIpfsNft.address)) {
+            contractAddresses[chainId]["BasicIpfsNft"].push(basicIpfsNft.address);
+        }
     } else {
         contractAddresses[chainId] = { NftMarketplace: [nftMarketplace.address] };
         contractAddresses[chainId] = { dynamicSvgNft: [nftMarketplace.address] };
+        contractAddresses[chainId] = { basicIpfsNft: [nftMarketplace.address] };
+
     }
     fs.writeFileSync(FRONTEND_CONTRACT_ADDERS_FILE, JSON.stringify(contractAddresses));
 }
