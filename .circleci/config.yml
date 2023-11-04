@@ -1,6 +1,6 @@
 default-environment: &default-environment
   docker:
-    - image: cimg/node:18.17.0
+    - image: cimg/node:16.20.2
 
 version: 2.1
 jobs:
