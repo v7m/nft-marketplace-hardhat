@@ -29,25 +29,31 @@ async function updateContractAbi() {
         basicIpfsNft.interface.format(ethers.utils.FormatTypes.json)
     );
 
-    const DynamicSvgNft = await ethers.getContract("DynamicSvgNft");
+    const dynamicSvgNft = await ethers.getContract("DynamicSvgNft");
 
     fs.writeFileSync(
         `${FRONTEND_CONTRACT_ABI_DIRECTORY}DynamicSvgNftAbi.json`,
-        DynamicSvgNft.interface.format(ethers.utils.FormatTypes.json)
+        dynamicSvgNft.interface.format(ethers.utils.FormatTypes.json)
     );
 }
 
 async function updateContractAddresses() {
     const chainId = network.config.chainId.toString();
     const nftMarketplace = await ethers.getContract("NftMarketplace");
+    const dynamicSvgNft = await ethers.getContract("DynamicSvgNft");
     const contractAddresses = JSON.parse(fs.readFileSync(FRONTEND_CONTRACT_ADDERS_FILE, "utf8"));
 
     if (chainId in contractAddresses) {
         if (!contractAddresses[chainId]["NftMarketplace"].includes(nftMarketplace.address)) {
             contractAddresses[chainId]["NftMarketplace"].push(nftMarketplace.address);
         }
+
+        if (!contractAddresses[chainId]["DynamicSvgNft"].includes(dynamicSvgNft.address)) {
+            contractAddresses[chainId]["DynamicSvgNft"].push(dynamicSvgNft.address);
+        }
     } else {
         contractAddresses[chainId] = { NftMarketplace: [nftMarketplace.address] };
+        contractAddresses[chainId] = { dynamicSvgNft: [nftMarketplace.address] };
     }
     fs.writeFileSync(FRONTEND_CONTRACT_ADDERS_FILE, JSON.stringify(contractAddresses));
 }

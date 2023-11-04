@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract BasicIpfsNft is ERC721 {
-    string public constant TOKEN_URI = "ipfs://QmTimrnfNBGqem5HTWY26ewv8nWfoMSbvFFAMqikX3RV2A";
+    string public constant TOKEN_URI = "ipfs://QmextHQFZiDihEphLqcdkJcgLnUeGtdFDWiKatw2nF2Vkm";
     using Counters for Counters.Counter;
     Counters.Counter private s_tokenCounter;
 

@@ -1,14 +1,15 @@
-const { network } = require("hardhat");
-const { networkConfig, developmentChains } = require("../helper-hardhat-config");
+const { network, ethers } = require("hardhat");
+const { chainIds, networkConfig, developmentChains } = require("../helper-hardhat-config");
 const { verify } = require("../utils/verify");
 const fs = require("fs");
 
-const FUND_AMOUNT = "1000000000000000000000";
+const VRF_FUND_AMOUNT = ethers.utils.parseEther("1"); // 1 ETH
 
 module.exports = async ({ getNamedAccounts, deployments }) => {
     const { deploy, log } = deployments;
     const { deployer } = await getNamedAccounts();
     const chainId = network.config.chainId;
+    let vrfCoordinatorV2Address, vrfSubscriptionId, vrfCoordinatorV2Mock;
 
     svgShapes = [
         fs.readFileSync("./assets/images/blue.svg", { encoding: "utf8" }),
@@ -17,13 +18,13 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
         fs.readFileSync("./assets/images/red.svg", { encoding: "utf8" }),
     ]
 
-    if (chainId == 31337) {
+    if (chainId == chainIds["localhost"]) {
         vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock");
         vrfCoordinatorV2Address = vrfCoordinatorV2Mock.address;
         const transactionResponse = await vrfCoordinatorV2Mock.createSubscription();
         const transactionReceipt = await transactionResponse.wait();
         vrfSubscriptionId = transactionReceipt.events[0].args.subId;
-        await vrfCoordinatorV2Mock.fundSubscription(vrfSubscriptionId, FUND_AMOUNT);
+        await vrfCoordinatorV2Mock.fundSubscription(vrfSubscriptionId, VRF_FUND_AMOUNT);
     } else {
         vrfCoordinatorV2Address = networkConfig[chainId].vrfCoordinatorV2;
         vrfSubscriptionId = networkConfig[chainId].vrfSubscriptionId;
@@ -47,7 +48,8 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
         waitConfirmations: network.config.blockConfirmations || 1,
     });
 
-    if (chainId == 31337) {
+    if (developmentChains.includes(network.name)) {
+        const vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock");
         await vrfCoordinatorV2Mock.addConsumer(vrfSubscriptionId, dynamicSvgNft.address);
     }
 

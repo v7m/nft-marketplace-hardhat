@@ -107,8 +107,8 @@ contract DynamicSvgNft is ERC721URIStorage, VRFConsumerBaseV2  {
 
         bytes memory dataURI = abi.encodePacked(
             '{',
-                '"name": "Dynamic Shape SVG #', tokenId.toString(), '", ',
-                '"description": "An NFT that changes based on the amount of minting fee", ',
+                '"name": "Dynamic SVG NFT #', tokenId.toString(), '", ',
+                '"description": "Dynamic on-chain SVG NFT", ',
                 '"image": "', imageURI, '"',
             '}'
         );

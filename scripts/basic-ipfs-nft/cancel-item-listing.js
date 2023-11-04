@@ -1,9 +1,9 @@
 const { ethers, network } = require("hardhat");
 const { moveBlocks } = require("../../utils/move-blocks");
 
-const TOKEN_ID = 0;
+const TOKEN_ID = 4;
 
-async function cancel() {
+async function cancelItemListing() {
     const nftMarketplace = await ethers.getContract("NftMarketplace");
     const basicIpfsNft = await ethers.getContract("BasicIpfsNft");
     const tx = await nftMarketplace.cancelListing(basicIpfsNft.address, TOKEN_ID);
@@ -14,7 +14,7 @@ async function cancel() {
     }
 }
 
-cancel()
+cancelItemListing()
     .then(() => process.exit(0))
     .catch((error) => {
         console.error(error)
