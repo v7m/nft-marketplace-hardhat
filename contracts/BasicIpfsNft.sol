@@ -11,8 +11,7 @@ contract BasicIpfsNft is ERC721 {
 
     event NftMinted(uint256 indexed tokenId);
 
-    constructor() ERC721("Basic IPFS NFT", "BIN") {
-    }
+    constructor() ERC721("Basic IPFS NFT", "BIN") {}
 
     function mintNft() public {
         _safeMint(msg.sender, s_tokenCounter.current());
