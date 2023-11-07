@@ -2,15 +2,15 @@
 
 [![NFTM](https://circleci.com/gh/v7m/nft-marketplace-hardhat.svg?style=shield)](https://app.circleci.com/pipelines/github/v7m/nft-marketplace-hardhat)
 
-*The purpose of this project is to acquire hands-on experience in web3 application development.*
+> *This is an educational project with the purpose of acquiring hands-on experience in web3 application development using smart contracts written in Solidity.*
 
 The NFT Marketplace project consists of 3 parts:
 
-[Hardhat App](https://github.com/v7m/nft-marketplace-hardhat): this component is responsible for managing smart contracts and includes deployment scripts, using the popular development environment for Ethereum smart contracts.
+[Hardhat App](https://github.com/v7m/nft-marketplace-hardhat): This component is responsible for managing smart contracts and includes deployment scripts, using the popular development environment for Ethereum smart contracts.
 
-[Next.js App](https://github.com/v7m/nft-marketplace-nextjs): this part serves as the frontend of the application and interacts with on-chain logic within the Ethereum ecosystem.
+[Next.js App](https://github.com/v7m/nft-marketplace-nextjs): This part serves as the frontend of the application and interacts with on-chain logic within the Ethereum ecosystem.
 
-[The Graph App](https://github.com/v7m/nft-marketplace-grap): this component handles the storage and indexing of blockchain events. The Graph is a widely used indexing and querying protocol for blockchain data.
+[The Graph App](https://github.com/v7m/nft-marketplace-graph): This component handles the storage and indexing of blockchain events. The Graph is a widely used indexing and querying protocol for blockchain data.
 
 ## NFT Marketplace Features:
 
