@@ -33,9 +33,9 @@ The NFT Marketplace project consists of 3 parts:
 - IPFS
 
 ## Smart contract addresses:
-- NftMarketplace: [0x92bAC4C5F8fC58CAad8057885D02791DA9611859](https://sepolia.etherscan.io/address/0x92bAC4C5F8fC58CAad8057885D02791DA9611859)
-- BasicIpfsNft: [0xC533F014F12be775186Ffb0BA0c787Cff21ba5A1](https://sepolia.etherscan.io/address/0xC533F014F12be775186Ffb0BA0c787Cff21ba5A1)
-- DynamicSvgNft: [0x2f64C3F88a713d2F32fb2f0f8FE10b5D0bD9bAB1](https://sepolia.etherscan.io/address/0x2f64C3F88a713d2F32fb2f0f8FE10b5D0bD9bAB1)
+- `NftMarketplace`: [0x397f76438DfcA65501c91995e38A8aAE7e13848A](https://sepolia.etherscan.io/address/0x397f76438DfcA65501c91995e38A8aAE7e13848A)
+- `BasicIpfsNft`: [0x799c27a23a2eD1473A7Bc1F4704aFc688a9E8f6e](https://sepolia.etherscan.io/address/0x799c27a23a2eD1473A7Bc1F4704aFc688a9E8f6e)
+- `DynamicSvgNft`: [0xB9BD4D25D32DD41cf3D82Eafb6E927b06e68c6b8](https://sepolia.etherscan.io/address/0xB9BD4D25D32DD41cf3D82Eafb6E927b06e68c6b8)
 
 # Getting Started
 
